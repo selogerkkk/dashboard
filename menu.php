@@ -1,6 +1,6 @@
 <nav id="sidebar" class="sidebar js-sidebar">
     <div class="sidebar-content js-simplebar">
-        <a class="sidebar-brand" href="index.html">
+        <a class="sidebar-brand" href="index.php">
             <span class="align-middle">AdminKit</span>
         </a>
 
@@ -8,9 +8,21 @@
             <li class="sidebar-header">Pages</li>
 
             <li class="sidebar-item active">
-                <a class="sidebar-link" href="index.html">
+                <a class="sidebar-link" href="index.php">
                     <i class="align-middle" data-feather="sliders"></i>
                     <span class="align-middle">Dashboard</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="formCliente.php">
+                    <i class="align-middle" data-feather="sliders"></i>
+                    <span class="align-middle">Clientes</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="index.php">
+                    <i class="align-middle" data-feather="sliders"></i>
+                    <span class="align-middle">Serviços</span>
                 </a>
             </li>
 
