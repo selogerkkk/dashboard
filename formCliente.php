@@ -24,19 +24,23 @@
                                 <form action="#">
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput1" class="form-label">Nome completo</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" required>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" required
+                                            autocomplete="off">
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput1" class="form-label">E-mail</label>
-                                        <input type="email" class="form-control" id="exampleFormControlInput1" required>
+                                        <input type="email" class="form-control" id="exampleFormControlInput1" required
+                                            autocomplete="off">
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput1" class="form-label">Telefone</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" required>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" required
+                                            autocomplete="off">
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput1" class="form-label">CPF/CNPJ</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" required>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" required
+                                            autocomplete="off">
                                     </div>
 
                                     <div class="row">
@@ -44,7 +48,7 @@
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1" class="form-label">CEP</label>
                                                 <input type="text" class="form-control" id="exampleFormControlInput1"
-                                                    required>
+                                                    required autocomplete="off">
                                             </div>
                                         </div>
                                         <div class="col-9">
@@ -52,7 +56,7 @@
                                                 <label for="exampleFormControlInput1"
                                                     class="form-label">Logradouro</label>
                                                 <input type="text" class="form-control" id="exampleFormControlInput1"
-                                                    required>
+                                                    required autocomplete="off">
                                             </div>
                                         </div>
                                     </div>
@@ -61,21 +65,21 @@
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1" class="form-label">Nº</label>
                                                 <input type="text" class="form-control" id="exampleFormControlInput1"
-                                                    required>
+                                                    required autocomplete="off">
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1" class="form-label">Cidade</label>
                                                 <input type="text" class="form-control" id="exampleFormControlInput1"
-                                                    required>
+                                                    required autocomplete="off">
                                             </div>
                                         </div>
                                         <div class="col-3">
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1" class="form-label">Estado</label>
                                                 <input type="text" class="form-control" id="exampleFormControlInput1"
-                                                    required>
+                                                    required autocomplete="off">
                                             </div>
                                         </div>
                                     </div>
