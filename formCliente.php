@@ -116,4 +116,31 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/0.9.0/jquery.mask.min.js" integrity="sha512-oJCa6FS2+zO3EitUSj+xeiEN9UTr+AjqlBZO58OPadb2RfqwxHpjTU8ckIC8F4nKvom7iru2s8Jwdo+Z8zm0Vg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="text/javascript">
     $("#telefone, #celular").mask("(00) 00000-0000");
+
+    $("#cpfcnpj").keydown(function() {
+        try {
+            $("#cpfcnpj").unmask();
+        } catch (e) {}
+    });
+
+    $("#cpfcnpj").on("input", function() {
+        var tamanho = $(this).val().replace(/[^0-9]/g, '').length;
+        if (tamanho < 11) {
+            $(this).mask("999.999.999-99");
+        } else {
+            $(this).mask("99.999.999/9999-99");
+        }
+    });
+
+    $("#cpfcnpj").on("focus", function() {
+        var elem = this;
+        setTimeout(function() {
+            elem.selectionStart = elem.selectionEnd = 10000;
+        }, 0);
+    });
+
+    $("#cpfcnpj").on("input", function() {
+        var currentValue = $(this).val();
+        $(this).val(currentValue);
+    });
 </script>
