@@ -124,21 +124,19 @@
     });
 
     function viaCEP() {
-        var numCep = $("#cep").val();
+        var numCep = document.getElementById("cep").value;
         var url = "https://viacep.com.br/ws/" + numCep + "/json";
 
-        $.ajax({
-            url: url,
-            type: "get",
-            dataType: "json",
-            success: function(dados) {
-                $("#uf").val(dados.uf);
-                $("#cidade").val(dados.localidade);
-                $("#logradouro").val(dados.logradouro);
-                $("#bairro").val(dados.bairro);
-            }
-        })
-    }
+        fetch(url).then(Response => Response.json()).then(data => {
+                document.getElementById("uf").value = data.uf;
+                document.getElementById("cidade").value = data.localidade;
+                document.getElementById("logradouro").value = data.logradouro;
+                document.getElementById("bairro").value = data.bairro;
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    };
 </script>
 
 <script type="text/javascript">
