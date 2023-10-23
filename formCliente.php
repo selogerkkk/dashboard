@@ -21,14 +21,14 @@
                                 <h5>Formulário do cliente</h5>
                             </div>
                             <div class="card-body">
-                                <form action="#">
+                                <form action="cadastroCliente.php" enctype="multipart/form-data" method="post">
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput1" class="form-label">Nome completo</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" required autocomplete="off">
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" name="nome" required autocomplete="off">
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput1" class="form-label">E-mail</label>
-                                        <input type="email" class="form-control" id="exampleFormControlInput1" required autocomplete="off">
+                                        <input type="email" class="form-control" id="exampleFormControlInput1" name="email" required autocomplete="off">
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput1" class="form-label">Telefone</label>
@@ -36,20 +36,20 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput1" class="form-label">CPF/CNPJ</label>
-                                        <input type="text" class="form-control" id="cpfcnpj" required autocomplete="off">
+                                        <input type="text" class="form-control" id="cpfcnpj" name="cpfcnpj" required autocomplete="off">
                                     </div>
 
                                     <div class="row">
                                         <div class="col-4">
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1" class="form-label">CEP</label>
-                                                <input type="text" class="form-control" id="cep" maxlength="8" required autocomplete="off">
+                                                <input type="text" class="form-control" id="cep" name="cep" maxlength="8" required autocomplete="off">
                                             </div>
                                         </div>
                                         <div class="col-8">
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1" class="form-label">Logradouro</label>
-                                                <input type="text" class="form-control" id="logradouro" required autocomplete="off">
+                                                <input type="text" class="form-control" id="logradouro" name="logradouro" required autocomplete="off">
                                             </div>
                                         </div>
                                     </div>
@@ -57,32 +57,32 @@
                                         <div class="col-3">
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1" class="form-label">Nº</label>
-                                                <input type="text" class="form-control" id="exampleFormControlInput1" required autocomplete="off">
+                                                <input type="text" class="form-control" id="exampleFormControlInput1" name="numero" required autocomplete="off">
                                             </div>
                                         </div>
                                         <div class="col-9">
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1" class="form-label">Complemento</label>
-                                                <input type="text" class="form-control" id="complemento" required autocomplete="off">
+                                                <input type="text" class="form-control" id="complemento" name="complemento" required autocomplete="off">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-5">
                                                 <div class="mb-3">
                                                     <label for="exampleFormControlInput1" class="form-label">Bairro</label>
-                                                    <input type="text" class="form-control" id="bairro" required autocomplete="off">
+                                                    <input type="text" class="form-control" id="bairro" name="bairro" required autocomplete="off">
                                                 </div>
                                             </div>
                                             <div class="col-5">
                                                 <div class="mb-3">
                                                     <label for="exampleFormControlInput1" class="form-label">Cidade</label>
-                                                    <input type="text" class="form-control" id="cidade" required autocomplete="off">
+                                                    <input type="text" class="form-control" id="cidade" name="cidade" required autocomplete="off">
                                                 </div>
                                             </div>
                                             <div class="col-2">
                                                 <div class="mb-3">
                                                     <label for="exampleFormControlInput1" class="form-label">Estado</label>
-                                                    <input type="text" class="form-control" id="uf" required autocomplete="off">
+                                                    <input type="text" class="form-control" id="uf" name="uf" required autocomplete="off">
                                                 </div>
                                             </div>
 
@@ -90,7 +90,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="formFile" class="form-label">Logo/imagem Pessoa</label>
-                                        <input class="form-control" type="file" id="formFile">
+                                        <input class="form-control" type="file" name="foto" id="formFile">
                                     </div>
                                     <div style="text-align: right">
                                         <button type="submit" class="btn btn-primary">Enviar</button>
