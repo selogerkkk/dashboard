@@ -21,14 +21,8 @@ if ($arquivo !== null) {
     if ($ext == true) {
         $nome_arquivo = md5(uniqid(time())) . "." . $ext[1];
         $caminho_arquivo = "imagens/" . $nome_arquivo;
-        if (copy($arquivo['tmp_name'], $caminho_arquivo)) {
-            echo "upou";
-        }
+        copy($arquivo['tmp_name'], $caminho_arquivo);
         $sql = "INSERT INTO `cliente` (`nome`, `email`, `telefone`, `cpfcnpj`, `logradouro`, `numero`, `complemento`, `bairro`, `cidade`, `estado`, `imagem`, `cep`) VALUES ('$nome','$mail','$telefone','$cpfcnpj','$logradouro','$numero','$complemento','$bairro','$cidade','$estado','$nome_arquivo','$cep')";
         $result = mysqli_query($conn, $sql);
     }
 }
-
-echo $arquivo['tmp_name'] . PHP_EOL;
-echo $nome_arquivo . PHP_EOL;
-echo $caminho_arquivo . PHP_EOL;
