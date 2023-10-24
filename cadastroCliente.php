@@ -3,7 +3,7 @@
 include 'config.php';
 
 $nome = $_POST['nome'];
-$mail = $_POST['mail'];
+$mail = $_POST['email'];
 $telefone = $_POST['telefone'];
 $cpfcnpj = $_POST['cpfcnpj'];
 $cep = $_POST['cep'];
@@ -26,3 +26,6 @@ if ($arquivo !== null) {
         $result = mysqli_query($conn, $sql);
     }
 }
+
+
+header('location: formCliente.php');
