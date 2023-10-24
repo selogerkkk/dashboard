@@ -38,7 +38,6 @@
                                         <label for="exampleFormControlInput1" class="form-label">CPF/CNPJ</label>
                                         <input type="text" class="form-control" id="cpfcnpj" name="cpfcnpj" required autocomplete="off">
                                     </div>
-
                                     <div class="row">
                                         <div class="col-4">
                                             <div class="mb-3">
@@ -101,13 +100,59 @@
                     </div>
                 </div>
             </main>
-            <footer class="footer">
-                <?php include 'footer.php'; ?>
-            </footer>
-        </div>
-    </div>
+            <main class="content">
+                <h4 class="h3 mb-3">Lista de clientes</h4>
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Dados dos clientes</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Foto</th>
+                                        <th scope="col">Nome</th>
+                                        <th scope="col">E-mail</th>
+                                        <th scope="col">Telefone</th>
+                                        <th scope="col">Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    include 'config.php';
+                                    $sql = "SELECT * FROM cliente";
+                                    $busca = mysqli_query($conn, $sql);
 
-    <script src="js/app.js"></script>
+                                    while ($dados = mysqli_fetch_array($busca)) {
+                                        $fotos = $dados['imagem'];
+                                        $nome = $dados['nome'];
+                                        $email = $dados['email'];
+                                        $telefone = $dados['telefone'];
+                                        $estado = $dados['estado'];
+                                    ?>
+                                        <tr>
+                                            <td><img src="imagens/<?= $fotos ?>" class="img-fluid img-thumbnail" width="70px" height="70px"></td>
+                                            <td><?= $nome ?></td>
+                                            <td><?= $email ?></td>
+                                            <td><?= $telefone ?></td>
+                                            <td><?= $estado ?></td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <div class=" card-body">
+                <footer class="footer">
+                    <?php include 'footer.php'; ?>
+                </footer>
+            </div>
+        </div>
+
+        <script src="js/app.js"></script>
 </body>
 
 </html>
