@@ -5,9 +5,8 @@ $id = $_POST['id'];
 $nome = $_POST['nome'];
 $mail = $_POST['email'];
 $telefone = $_POST['telefone'];
-$estado = $_POST['uf'];
+$estado = $_POST['estado'];
 
-print $id;
 $sql = "UPDATE `cliente` SET 
         `nome` = '$nome',
         `email` = '$mail',
