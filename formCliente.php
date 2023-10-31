@@ -132,8 +132,7 @@
                                         $email = $dados['email'];
                                         $telefone = $dados['telefone'];
                                         $estado = $dados['estado'];
-                                        $modalEditar_id = 'Editar' . $id;
-                                        $modalExcluir_id = 'Excluir' . $id;
+
 
                                     ?>
                                         <tr>
@@ -143,14 +142,15 @@
                                             <td><?= $telefone ?></td>
                                             <td><?= $estado ?></td>
                                             <td>
-                                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#<?= $modalEditar_id ?>" data-id="<?= $id ?>" data-fotos="<?= $fotos ?>" data-nome="<?= $nome ?>" data-email="<?= $email ?>" data-telefone="<?= $telefone ?>" data-estado="<?= $estado ?>">
+                                                <button type="button" class="btn btn-warning editar-button" data-bs-toggle="modal" data-bs-target="#editarModal" data-id="<?= $id ?>" data-fotos="<?= $fotos ?>" data-nome="<?= $nome ?>" data-email="<?= $email ?>" data-telefone="<?= $telefone ?>" data-estado="<?= $estado ?>">
                                                     <i class="fa-solid fa-file-pen"></i>
                                                 </button>
-                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#<?= $modalExcluir_id ?>" data-id="<?= $id ?>" data-nome="<?= $nome ?>">
+                                                <button type="button" class="btn btn-danger excluir-button" data-bs-toggle="modal" data-bs-target="#excluirModal" data-id="<?= $id ?>" data-nome="<?= $nome ?>">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </button>
 
-                                                <div class="modal fade" id="<?= $modalEditar_id ?>" tabindex="-1" aria-labelledby="   <?= $modalEditar_id ?>" aria-hidden="true">
+
+                                                <div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="editarModal" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -186,7 +186,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="modal fade" id="<?= $modalExcluir_id ?>" tabindex="-1" aria-labelledby="<?= $modalExcluir_id ?>" aria-hidden="true">
+                                                <div class="modal fade" id="excluirModal" tabindex="-1" aria-labelledby="excluirModal" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -196,8 +196,7 @@
                                                             <div class="modal-body">
                                                                 <form action="excluirCliente.php" method="post">
                                                                     <div class="mb-3">
-                                                                        <label for="exampleFormControlInput1" class="form-label">Nome</label>
-                                                                        <input type="text" class="form-control" id="nome" name="nome" required autocomplete="off" readonly>
+                                                                        Tem certeza que deseja excluir o cliente selecionado?
                                                                         <input type="hidden" id="id" name="id">
                                                                     </div>
                                                             </div>
@@ -235,52 +234,59 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const editarModal = document.getElementById('<?= $modalEditar_id; ?>');
-        const editarButton = document.querySelector('button[data-bs-target="#<?= $modalEditar_id ?>"]');
+        const editarButtons = document.querySelectorAll('.editar-button');
+        const editarModal = document.getElementById('editarModal');
 
-        editarButton.addEventListener('click', function() {
-            const id = editarButton.getAttribute('data-id');
-            const nome = editarButton.getAttribute('data-nome');
-            const email = editarButton.getAttribute('data-email');
-            const telefone = editarButton.getAttribute('data-telefone');
-            const estado = editarButton.getAttribute('data-estado');
+        const modalEditarTitle = editarModal.querySelector('.modal-title');
+        const idInput = editarModal.querySelector('#id');
+        const nomeInput = editarModal.querySelector('#nome');
+        const emailInput = editarModal.querySelector('#email');
+        const telefoneInput = editarModal.querySelector('#telefone');
+        const estadoInput = editarModal.querySelector('#estado');
 
-            const modalTitle = editarModal.querySelector('.modal-title')
-            const idInput = editarModal.querySelector('#id');
-            const nomeInput = editarModal.querySelector('#nome');
-            const emailInput = editarModal.querySelector('#email');
-            const telefoneInput = editarModal.querySelector('#telefone');
-            const estadoInput = editarModal.querySelector('#estado');
+        const excluirButtons = document.querySelectorAll('.excluir-button');
+        const excluirModal = document.getElementById('excluirModal');
 
-            modalTitle.textContent = "Editar cliente: " + nome;
-            idInput.value = id;
-            nomeInput.value = nome;
-            emailInput.value = email;
-            telefoneInput.value = telefone;
-            estadoInput.value = estado;
-        })
-    });
-</script>
+        const modalExcluirTitle = excluirModal.querySelector('.modal-title');
+        const idExcluirInput = excluirModal.querySelector('#id');
+        const nomeExcluirInput2 = excluirModal.querySelector('#nome');
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const excluirModal = document.getElementById('<?= $modalExcluir_id ?>');
-        const excluirButton = document.querySelector('button[data-bs-target="#<?= $modalExcluir_id ?>"]');
+        editarButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const id = button.getAttribute('data-id');
+                const nome = button.getAttribute('data-nome');
+                const email = button.getAttribute('data-email');
+                const telefone = button.getAttribute('data-telefone');
+                const estado = button.getAttribute('data-estado');
 
-        excluirButton.addEventListener('click', function() {
-            const id = excluirButton.getAttribute('data-id');
-            const nome = excluirButton.getAttribute('data-nome');
+                modalEditarTitle.textContent = "Editar cliente: " + nome;
+                idInput.value = id;
+                nomeInput.value = nome;
+                emailInput.value = email;
+                telefoneInput.value = telefone;
+                estadoInput.value = estado;
 
-            const modalTitle = excluirModal.querySelector('.modal-title');
-            const idInput = excluirModal.querySelector('#id');
-            const nomeInput = excluirModal.querySelector('#nome');
+                const editarModalInstance = new bootstrap.Modal(editarModal);
+                editarModalInstance.show();
+            });
+        });
 
-            modalTitle.textContent = "Excluir cliente: " + nome;
-            idInput.value = id;
-            nomeInput.value = nome;
+        excluirButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const id = button.getAttribute('data-id');
+                const nome = button.getAttribute('data-nome');
+
+
+                modalExcluirTitle.textContent = "Excluir cliente: " + nome;
+                idExcluirInput.value = id;
+
+                const excluirModalInstance = new bootstrap.Modal(excluirModal);
+                excluirModalInstance.show();
+            });
         });
     });
 </script>
+
 
 <script>
     document.getElementById("cep").addEventListener("input", function() {
