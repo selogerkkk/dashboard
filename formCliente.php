@@ -133,6 +133,7 @@
                                         $telefone = $dados['telefone'];
                                         $estado = $dados['estado'];
                                         $modalEditar_id = 'Editar' . $id;
+                                        $modalExcluir_id = 'Excluir' . $id;
 
                                     ?>
                                         <tr>
@@ -145,7 +146,7 @@
                                                 <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#<?= $modalEditar_id ?>" data-id="<?= $id ?>" data-fotos="<?= $fotos ?>" data-nome="<?= $nome ?>" data-email="<?= $email ?>" data-telefone="<?= $telefone ?>" data-estado="<?= $estado ?>">
                                                     <i class="fa-solid fa-file-pen"></i>
                                                 </button>
-                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#Excluir">
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#<?= $modalExcluir_id ?>" data-id="<?= $id ?>" data-nome="<?= $nome ?>">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </button>
 
@@ -185,7 +186,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="modal fade" id="Excluir" tabindex="-1" aria-labelledby="Excluir" aria-hidden="true">
+                                                <div class="modal fade" id="<?= $modalExcluir_id ?>" tabindex="-1" aria-labelledby="<?= $modalExcluir_id ?>" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -193,12 +194,18 @@
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                ...
+                                                                <form action="excluirCliente.php" method="post">
+                                                                    <div class="mb-3">
+                                                                        <label for="exampleFormControlInput1" class="form-label">Nome</label>
+                                                                        <input type="text" class="form-control" id="nome" name="nome" required autocomplete="off" readonly>
+                                                                        <input type="hidden" id="id" name="id">
+                                                                    </div>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                                                <button type="button" class="btn btn-danger">Confirmar</button>
+                                                                <button type="button" onclick="" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                                                <button type="submit" class="btn btn-danger">Excluir</button>
                                                             </div>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -252,6 +259,26 @@
             telefoneInput.value = telefone;
             estadoInput.value = estado;
         })
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const excluirModal = document.getElementById('<?= $modalExcluir_id ?>');
+        const excluirButton = document.querySelector('button[data-bs-target="#<?= $modalExcluir_id ?>"]');
+
+        excluirButton.addEventListener('click', function() {
+            const id = excluirButton.getAttribute('data-id');
+            const nome = excluirButton.getAttribute('data-nome');
+
+            const modalTitle = excluirModal.querySelector('.modal-title');
+            const idInput = excluirModal.querySelector('#id');
+            const nomeInput = excluirModal.querySelector('#nome');
+
+            modalTitle.textContent = "Excluir cliente: " + nome;
+            idInput.value = id;
+            nomeInput.value = nome;
+        });
     });
 </script>
 
