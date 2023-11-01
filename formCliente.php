@@ -178,7 +178,7 @@
                                                                     </div>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" onclick="" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                                                                 <button type="submit" class="btn btn-success">Salvar</button>
                                                             </div>
                                                             </form>
@@ -201,7 +201,7 @@
                                                                     </div>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" onclick="" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                                                                 <button type="submit" class="btn btn-danger">Excluir</button>
                                                             </div>
                                                             </form>
