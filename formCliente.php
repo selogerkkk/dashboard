@@ -151,7 +151,7 @@
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form action="atualizarCliente.php" method="post">
+                                                                <form action="atualizarCliente.php" method="post" enctype="multipart/form-data">
                                                                     <div class="mb-3">
                                                                         <label for="exampleFormControlInput1" class="form-label">Nome</label>
                                                                         <input type="text" class="form-control" id="nome" name="nome" required autocomplete="off">
@@ -168,6 +168,13 @@
                                                                     <div class="mb-3">
                                                                         <label for="exampleFormControlInput1" class="form-label">Estado</label>
                                                                         <input type="text" class="form-control" id="estado" name="estado" required autocomplete="off">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <div style="text-align: center;">
+                                                                            <img src="imagens/<?= $fotos ?>" id="fotoEdicao" class="img-fluid img-thumbnail" width="100px" height="100px">
+                                                                        </div>
+                                                                        <label for="exampleFormControlInput1" class="form-label">Imagem</label>
+                                                                        <input type="file" class="form-control" name="fotoatualizada">
                                                                     </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -231,6 +238,7 @@
         const emailInput = editarModal.querySelector('#email');
         const telefoneInput = editarModal.querySelector('#telefone');
         const estadoInput = editarModal.querySelector('#estado');
+        const fotoInput = editarModal.querySelector('#fotoEdicao');
 
         editarButtons.forEach(button => {
             button.addEventListener('click', function() {
@@ -239,6 +247,7 @@
                 const email = button.getAttribute('data-email');
                 const telefone = button.getAttribute('data-telefone');
                 const estado = button.getAttribute('data-estado');
+                const foto = button.getAttribute('data-fotos');
 
                 modalEditarTitle.textContent = "Editar cliente: " + nome;
                 idInput.value = id;
@@ -246,6 +255,7 @@
                 emailInput.value = email;
                 telefoneInput.value = telefone;
                 estadoInput.value = estado;
+                fotoInput.src = "imagens/" + foto;
             });
         });
 
