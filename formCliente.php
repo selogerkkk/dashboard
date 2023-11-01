@@ -8,10 +8,8 @@
 <body>
     <div class="wrapper">
         <?php include 'menu.php'; ?>
-
         <div class="main">
             <?php include 'topmenu.php'; ?>
-
             <main class="content">
                 <div class="container-fluid p-0">
                     <h1 class="h3 mb-3">Cliente</h1>
@@ -84,7 +82,6 @@
                                                     <input type="text" class="form-control" id="uf" name="uf" required autocomplete="off">
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                     <div class="mb-3">
@@ -132,8 +129,6 @@
                                         $email = $dados['email'];
                                         $telefone = $dados['telefone'];
                                         $estado = $dados['estado'];
-
-
                                     ?>
                                         <tr>
                                             <td><img src="imagens/<?= $fotos ?>" class="img-fluid img-thumbnail" width="70px" height="70px"></td>
@@ -148,8 +143,6 @@
                                                 <button type="button" class="btn btn-danger excluir-button" data-bs-toggle="modal" data-bs-target="#excluirModal" data-id="<?= $id ?>" data-nome="<?= $nome ?>">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </button>
-
-
                                                 <div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="editarModal" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
@@ -185,7 +178,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                                                 <div class="modal fade" id="excluirModal" tabindex="-1" aria-labelledby="excluirModal" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
@@ -223,15 +215,11 @@
                 </footer>
             </div>
         </div>
-
         <script src="js/app.js"></script>
 </body>
 
 </html>
-
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/0.9.0/jquery.mask.min.js" integrity="sha512-oJCa6FS2+zO3EitUSj+xeiEN9UTr+AjqlBZO58OPadb2RfqwxHpjTU8ckIC8F4nKvom7iru2s8Jwdo+Z8zm0Vg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const editarButtons = document.querySelectorAll('.editar-button');
@@ -243,13 +231,6 @@
         const emailInput = editarModal.querySelector('#email');
         const telefoneInput = editarModal.querySelector('#telefone');
         const estadoInput = editarModal.querySelector('#estado');
-
-        const excluirButtons = document.querySelectorAll('.excluir-button');
-        const excluirModal = document.getElementById('excluirModal');
-
-        const modalExcluirTitle = excluirModal.querySelector('.modal-title');
-        const idExcluirInput = excluirModal.querySelector('#id');
-        const nomeExcluirInput2 = excluirModal.querySelector('#nome');
 
         editarButtons.forEach(button => {
             button.addEventListener('click', function() {
@@ -268,11 +249,17 @@
             });
         });
 
+        const excluirButtons = document.querySelectorAll('.excluir-button');
+        const excluirModal = document.getElementById('excluirModal');
+
+        const modalExcluirTitle = excluirModal.querySelector('.modal-title');
+        const idExcluirInput = excluirModal.querySelector('#id');
+        const nomeExcluirInput2 = excluirModal.querySelector('#nome');
+
         excluirButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const id = button.getAttribute('data-id');
                 const nome = button.getAttribute('data-nome');
-
 
                 modalExcluirTitle.textContent = "Excluir cliente: " + nome;
                 idExcluirInput.value = id;
@@ -280,8 +267,6 @@
         });
     });
 </script>
-
-
 <script>
     document.getElementById("cep").addEventListener("input", function() {
         var numCep = document.getElementById("cep").value;
@@ -315,7 +300,6 @@
             });
     };
 </script>
-
 <script type="text/javascript">
     $("#telefone, #celular").mask("(00) 00000-0000");
     $("#cpfcnpj").keydown(function() {
@@ -324,13 +308,11 @@
         } catch (e) {}
 
         var tamanho = $("#cpfcnpj").val().length;
-
         if (tamanho < 14) {
             $("#cpfcnpj").mask("999.999.999-99");
         } else {
             $("#cpfcnpj").mask("99.999.999/9999-99");
         }
-
         var elem = this;
         setTimeout(function() {
             elem.selectionStart = elem.selectionEnd = 10000;
