@@ -265,9 +265,6 @@
                 emailInput.value = email;
                 telefoneInput.value = telefone;
                 estadoInput.value = estado;
-
-                const editarModalInstance = new bootstrap.Modal(editarModal);
-                editarModalInstance.show();
             });
         });
 
@@ -279,9 +276,6 @@
 
                 modalExcluirTitle.textContent = "Excluir cliente: " + nome;
                 idExcluirInput.value = id;
-
-                const excluirModalInstance = new bootstrap.Modal(excluirModal);
-                excluirModalInstance.show();
             });
         });
     });
