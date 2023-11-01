@@ -13,13 +13,6 @@ $sql = "UPDATE `cliente` SET
         `telefone` = '$telefone',
         `estado` = '$estado'
         WHERE `id_cliente` = $id";
-
-
 $result = mysqli_query($conn, $sql);
-
-if ($conn->connect_error) {
-    die("Conexão falhou: " . $conn->connect_error);
-}
-
 
 header('location: formCliente.php');
